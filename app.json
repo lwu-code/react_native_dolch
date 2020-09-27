@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Best Dolch Sight Words",
+    "slug": "Dolch-Sight-Words",
+    "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "platforms": ["ios", "android"],
+    "version": "2.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lililum.bestdolchsightwords"
+    },
+    "android": {
+      "package": "com.lililum.dolchsightwordsbest"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+import React, { Component } from "react";
+import {
+  Button,
+  View,
+  Text,
+  SectionList,
+  StyleSheet,
+  FlatList,
+  Dimensions
+} from "react-native";
+import Image from "react-native-scalable-image";
+
+import WordImages from "./WordImages";
+
+export default class BackgroundImage extends Component {
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+    const pic_path = navigation.getParam("pic_path", "apple");
+    console.log("constructor pic_path = ", pic_path);
+
+    this.state = { image_name: pic_path };
+  }
+
+  // static navigationOptions = {
+  //   title: "Word Image"
+
+  // };
+
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.image_name
+  });
+
+  renderItem = ({ item }) => (
+    <View>
+      <Image width={Dimensions.get("window").width} source={WordImages[item]} />
+    </View>
+  );
+
+  render() {
+    console.log(
+      "5 inBackgroundImage this.props.pic_path = ",
+      this.props.pic_path
+    );
+    let data = ["apple"];
+    // const { navigation } = this.props;
+    // const pic_path = navigation.getParam("pic_path", "apple");
+    // console.log("pic_path = ", pic_path);
+    console.log(" this.state.image_name = ", this.state.image_name);
+
+    if (this.state.image_name in WordImages) {
+      console.log("find picture in WordImages");
+      data = [this.state.image_name];
+    } else {
+      console.log("no picture in WordImages, use default one");
+    }
+
+    return <FlatList data={data} renderItem={this.renderItem} />;
+  }
+}
+
+var image_styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 20,
+    width: null,
+    height: null,
+    resizeMode: "cover"
+  },
+
+  text: {
+    textAlign: "center",
+    color: "white",
+    backgroundColor: "rgba(0,0,0,0)",
+    fontSize: 32
+  }
+});
